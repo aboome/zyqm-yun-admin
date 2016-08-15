@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>农业物联网智能管理后台-采集数据监控管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta name="MobileOptimized" content="320">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/pages/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/pages/collectDataManage.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style-layer.css">
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="qiminyun.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="header-inner fix">
+        <!-- BEGIN LOGO -->
+        <div class="navbar-brand">
+            <a href="index.html"><img src="assets/img/zyqm_logo3.png" alt=""/></a>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <img src="assets/img/menu-toggler.png" alt=""/>
+        </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <ul class="nav navbar-nav pull-right">
+            <li class="user_pic"><a href="javascript:;"><img src="assets/img/user_pic.jpg"></a></li>
+            <li class="dropdown user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                   data-close-others="true">
+				<span id="userName" class="username">
+				</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="javascript:;" id="changePsw"><i class="fa fa-user"></i> 修改密码</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="logOut"><i class="fa fa-key"></i> 注销登录</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END USER LOGIN DROPDOWN -->
+        </ul>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>
+<!--修改密码-->
+<div id="changePassword" style="display: none">
+    <form id="modifyPasswordInfo">
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="oldPsw"><p>原密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入原密码..." id="oldPsw" name="oldPsw">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="newPsw"><p>新密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入新密码..." id="newPsw" name="newPsw">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="conformPsw"><p>确认密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入确认密码..." id="conformPsw" name="conformPsw">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div id="yhMenu" curIndex="6" class="page-sidebar-wrapper">
+
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12 myPadding">
+                    <div class="portlet box myGreen">
+                        <div class="portlet-title titleHeight">
+                            <div class="caption">
+                                采集数据监控列表
+                            </div>
+                        </div>
+                        <div class="portlet-body fix">
+                            <div class="tableTop fix">
+                                <a href="javascript:;" class="refresh fr"><i class="fa fa-refresh fa-fw"></i>&nbsp;刷新</a>
+                            </div>
+
+                            <div class="collectInfo row" id="collectInfo">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT -->
+    </div>
+</div>
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    中域齐民版权所有&nbsp;&copy;2015-2016&nbsp;ICP证：苏ICP备16006050号
+    <div class="footer-tools">
+		<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+		</span>
+    </div>
+</div>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<script src="assets/plugins/excanvas.min.js"></script>
+<script src="assets/scripts/html5shiv.js"></script>
+<![endif]-->
+<script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"
+        type="text/javascript"></script>
+<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/plugins/layer/layer.js" type="text/javascript"></script>
+<script src="assets/scripts/juicer-min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<script src="assets/scripts/yhscripts/skip.js" type="text/javascript"></script>
+<script src="assets/scripts/app.js"></script>
+<script src="assets/scripts/global.js"></script>
+<script src="assets/scripts/yhscripts/yhGo.js"></script>
+<script src="assets/scripts/collectDataManage.js"></script>
+<script src="assets/scripts/yhscripts/yhMenu.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+<script id="dpListTpl" type="text/template">
+    <select id="changDpInfo" class="selectpicker bs-select-hidden selStyle"
+            data-live-search="true"
+            data-live-search-style="begins" title="Please select a lunch ...">
+        <option class="bs-title-option" value="-1">选择场地</option>
+        {@each list as it,index}
+        <option value=${it.dpId}>${it.dpName}</option>
+        {@/each}
+    </select>
+</script>
+
+<script id="dpTpl" type="text/template">
+
+    {@each list as it,index}
+    <div class="col-lg-4 row dpInfo" id="bmhInfo_${it.dpId}">
+        <h2 class="dpName">${it.dpName}</h2>
+        <div class="bmhInfo">
+            <div class="sensor">
+                <p class="sensorName nameH">
+                    <img src="assets/img/icon/temp.png" />
+                    温度
+                    <a href="javascript:;" class="settingBtn" data-typeVal="00" data-id="${it.dpId}"><img src="assets/img/icon/setting.png" /><span>设置</span></a>
+                </p>
+                <span class="temp sensorAuto" id="temp_${it.dpId}"></span>
+                <p class="detailH warningVal" data-typeVal="00" data-id="${it.dpId}" id="temp_warn_${it.dpId}">
+
+                </p>
+            </div>
+            <div class="sensor">
+                <p class="sensorName nameH">
+                    <img src="assets/img/icon/humidity.png" />
+                    湿度
+                    <a href="javascript:;" class="settingBtn" data-typeVal="01" data-id="${it.dpId}"><img src="assets/img/icon/setting.png" /><span>设置</span></a>
+                </p>
+                <span class="humidity sensorAuto" id="humidity_${it.dpId}"></span>
+                <p class="detailH warningVal" data-typeVal="01" data-id="${it.dpId}" id="humidity_warn_${it.dpId}">
+
+                </p>
+            </div>
+
+            <div class="sensor sensorH">
+                <p class="sensorName nameH">
+                    <img src="assets/img/icon/co2.png" />
+                    二氧化碳
+                </p>
+                <span class="co2 sensorAuto" id="co2_${it.dpId}"></span>
+            </div>
+            <div class="sensor sensorH">
+                <p class="sensorName nameH">
+                    <img src="assets/img/icon/illumination.png" />
+                    光照
+                </p>
+                <span class="illumination sensorAuto" id="illumination_${it.dpId}"></span>
+            </div>
+
+        </div>
+    </div>
+    {@/each}
+</script>
+
+<script id="tempTpl" type="text/template">
+    {@each list as it,index}
+        {@if it.sensorDataEnum == '01'}
+            <p class="sensorWrap">
+                <span class="sensorType">${it.sensorDataName}</span>：<span class="sensorVal">
+                    <i class="currentVal">${it.sensorDataValue}</i>℃
+                </span>
+            </p>
+        {@/if}
+    {@/each}
+</script>
+<script id="humidityTpl" type="text/template">
+    {@each list as it,index}
+        {@if it.sensorDataEnum == '02'}
+            <p class="sensorWrap">
+                <span class="sensorType">${it.sensorDataName}</span>：<span class="sensorVal">
+                    <i class="currentVal">${it.sensorDataValue}</i>%
+                </span>
+            </p>
+    {@/if}
+    {@/each}
+</script>
+<script id="co2Tpl" type="text/template">
+    {@each list as it,index}
+        {@if it.sensorDataEnum == '03'}
+            <p class="sensorWrap">
+                <span class="sensorType">${it.sensorDataName}</span>：<span class="sensorVal">
+                    <i class="currentVal">${it.sensorDataValue}</i>ppm
+                </span>
+            </p>
+        {@/if}
+    {@/each}
+</script>
+<script id="illuminationTpl" type="text/template">
+    {@each list as it,index}
+        {@if it.sensorDataEnum == '04'}
+            <p class="sensorWrap">
+                <span class="sensorType">${it.sensorDataName}</span>：<span class="sensorVal">
+                    <i class="currentVal">${it.sensorDataValue}</i>Lx
+                </span>
+            </p>
+    {@/if}
+{@/each}
+</script>
+
+<script id="tempWarnTpl" type="text/template">
+        {@if systemEnum == '00'}
+        <span class="warningTop" id="top_${dpId}_00">预警上限：<i class="warningTopVal">${top}</i>℃</span>
+        <span class="warningBot" id="bot_${dpId}_00">预警下限：<i class="warningBotVal">${bottom}</i>℃</span>
+
+        <span class="warningBot" id="topProcess_${dpId}_00" style="display: none">${topProcess}</span>
+        <span class="warningBot" id="bottomProcess_${dpId}_00" style="display: none">${bottomProcess}</span>
+        <span class="warningBot" id="topGroupId_${dpId}_00" style="display: none">${topGroupId}</span>
+        <span class="warningBot" id="bottomGroupId_${dpId}_00" style="display: none">${bottomGroupId}</span>
+        <span class="warningBot" id="topCommand_${dpId}_00" style="display: none">${topCommand}</span>
+        <span class="warningBot" id="bottomCommand_${dpId}_00" style="display: none">${bottomCommand}</span>
+        <span class="warningBot" id="topCondition_${dpId}_00" style="display: none">${topCondition}</span>
+        <span class="warningBot" id="bottomCondition_${dpId}_00" style="display: none">${bottomCondition}</span>
+        {@/if}
+</script>
+<script id="humidityWarnTpl" type="text/template">
+    {@if systemEnum == '01'}
+    <span class="warningTop" id="top_${dpId}_01">预警上限：<i class="warningTopVal">${top}</i>%</span>
+    <span class="warningBot" id="bot_${dpId}_01">预警下限：<i class="warningBotVal">${bottom}</i>%</span>
+
+    <span class="warningBot" id="topProcess_${dpId}_01" style="display: none">${topProcess}</span>
+    <span class="warningBot" id="bottomProcess_${dpId}_01" style="display: none">${bottomProcess}</span>
+    <span class="warningBot" id="topGroupId_${dpId}_01" style="display: none">${topGroupId}</span>
+    <span class="warningBot" id="bottomGroupId_${dpId}_01" style="display: none">${bottomGroupId}</span>
+    <span class="warningBot" id="topCommand_${dpId}_01" style="display: none">${topCommand}</span>
+    <span class="warningBot" id="bottomCommand_${dpId}_01" style="display: none">${bottomCommand}</span>
+    <span class="warningBot" id="topCondition_${dpId}_01" style="display: none">${topCondition}</span>
+    <span class="warningBot" id="bottomCondition_${dpId}_01" style="display: none">${bottomCondition}</span>
+    {@/if}
+</script>
+
+<script id="settingTpl" type="text/template">
+    <div class="setContent">
+        <div class="setInput">
+            <div class="top">
+                <p>
+                    <label for="top">上限：</label>
+                    <input id="top" type="text" value="">
+                </p>
+                <p>
+                    <label for="topWay">处理方式：</label>
+                    <select id="topWay">
+                        <option value="-1" selected>请选择</option>
+                        <option value="0">手动处理</option>
+                        <option value="1">自动处理</option>
+                    </select>
+                </p>
+                <p class="selectGroup" id="selectGroupTop">
+
+                </p>
+            </div>
+            <div class="bottom">
+                <p>
+                    <label for="bottom">下限：</label>
+                    <input id="bottom" type="text" value="">
+                </p>
+                <p>
+                    <label for="bottomWay">处理方式：</label>
+                    <select id="bottomWay">
+                        <option value="-1" selected>请选择</option>
+                        <option value="0">手动处理</option>
+                        <option value="1">自动处理</option>
+                    </select>
+                </p>
+                <p class="selectGroup" id="selectGroupBot">
+
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</script>
+
+<script id="groupTopTpl" type="text/template">
+    <label for="topGroup">选择分组：</label>
+    <select id="topGroup">
+        <option value="-1" selected>请选择</option>
+        {@each list as it, index}
+        <option value="${it.groupId}">${it.groupName}</option>
+        {@/each}
+    </select>
+    <br/>
+    <label for="topStop">终止条件：</label>
+    <input id="topStop" type="text" value="">
+    <br/>
+    <label for="topIo">选择开关：</label>
+    <select id="topIo">
+        <option value="-1" selected>请选择</option>
+        <option value="1">正向开关</option>
+        <option value="0">反向开关</option>
+    </select>
+</script>
+
+<script id="groupBotTpl" type="text/template">
+    <label for="botGroup">选择分组：</label>
+    <select id="botGroup">
+        <option value="-1" selected>请选择</option>
+        {@each list as it, index}
+        <option value="${it.groupId}">${it.groupName}</option>
+        {@/each}
+    </select>
+    <br/>
+    <label for="botStop">终止条件：</label>
+    <input id="botStop" type="text">
+    <br/>
+    <label for="botIo">选择开关：</label>
+    <select id="botIo">
+        <option value="-1" selected>请选择</option>
+        <option value="1">正向开关</option>
+        <option value="0">反向开关</option>
+    </select>
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+</html>

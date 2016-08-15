@@ -1,0 +1,68 @@
+.tubiao{
+    background-color: #fff;
+}
+.myGreen .nav-tabs{
+    border: none;
+    margin: 0px;
+    height: 50px;
+}
+.myGreen .nav-tabs li a{
+    border:none;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    -webkit-border-radius:0px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+    border: 0;
+}
+.form-control{
+    width: 80px;
+}
+#wendu{
+    padding: 20px;
+}
+#wendu p,#wendu select,#wendu a,#wendu input{
+    display: inline-block;
+    margin-right: 20px;
+}
+#wendu a{
+    background-color: #69A61B;
+    color: #fff;
+    border: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+#main,#main1{
+    margin-top: 20px;
+}
+#guangzhao{
+    padding: 20px;
+}
+#guangzhao p,#guangzhao select,#guangzhao a,#guangzhao input{
+    display: inline-block;
+    margin-right: 20px;
+}
+#guangzhao a{
+    background-color: #69A61B;
+    color: #fff;
+    border: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.total{
+    font-size: 20px;
+    position: absolute;
+    top: 122px;
+    right: 2%;
+}
+.control-label{
+    padding: 0;
+}
+.selStyle{
+    width: 155px;
+    margin-left: 20px;
+}

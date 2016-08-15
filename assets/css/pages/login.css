@@ -1,0 +1,188 @@
+html {
+    min-height: 100%;
+    height: 100%;
+    _height:100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    height: 100%;
+    _height:100%;
+    font-family: 'Microsoft YaHei', 'Open Sans', sans-serif;
+}
+.row{
+    margin: 0;
+}
+.wrap{
+    height: 100%;
+    position: relative;
+}
+.header,.content,.footer{
+    width: 100%;
+    margin: 0;
+    padding: 0 220px 0 220px;
+}
+@media (max-width: 1400px) {
+    .header,.content,.footer{
+        width: 1400px;
+        margin: 0;
+        padding: 0 220px 0 220px;
+    }
+}
+@media (max-width: 1200px) {
+    .header,.footer{
+        width: 1200px;
+        margin: 0;
+        padding: 0;
+    }
+    .content{
+        width: 1200px;
+        margin: 0;
+        padding: 0 120px 0 120px;
+    }
+}
+.header{
+    height: 100px;
+    border-bottom: 1px solid #AAAAAA;
+}
+.header .logo{
+    width: 310px;
+    float: left;
+}
+.header .skips{
+    float: right;
+}
+.header div h1{
+    height: 100px;
+    line-height: 100px;
+}
+.header div h1 img{
+    width: 100%;
+}
+.header .skips a{
+    line-height: 100px;
+    text-align: right;
+    font-size: 20px;
+    color: #848A99;
+    display: inline-block;
+    text-decoration: none;
+    width: 200px;
+    float: right;
+}
+.header .skips span{
+    line-height: 100px;
+    font-size: 20px;
+    color: #848A99;
+    float: right;
+}
+.header .skips .left{
+    padding-right: 22px;
+}
+.content{
+    height: 666px;
+    padding-top: 120px;
+
+}
+.content .rCode{
+    overflow: hidden;
+    text-align: center;
+}
+.content .rCode img{
+    width: 420px;
+    height: 420px;
+}
+#bmh-form{
+    border: 1px solid #AAAAAA;
+    padding: 30px;
+    margin: 0 auto;
+    width: 370px;
+}
+#bmh-form .form-title{
+    color: #8C8884;
+    font-size: 12px;
+    font-family: 'Microsoft YaHei', 'Open Sans', sans-serif;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #C4C4C4;
+}
+#bmh-form .form-group{
+    padding-top: 20px;
+}
+#bmh-form .form-group .input-icon{
+    padding-top: 10px;
+}
+#bmh-form .form-group .control-label{
+    color: #595A58;
+    font-size: 16px;
+    font-family: 'Microsoft YaHei', 'Open Sans', sans-serif;
+}
+#bmh-form .form-group .forgetPassword{
+    text-decoration: none;
+    color: #69A61B;
+    display: inline-block;
+    float: right;
+}
+#bmh-form .form-actions .checkbox{
+    color: #595A58;
+    line-height: 18px;
+    width: 80px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    vertical-align:middle;
+    -moz-user-select:none;/*火狐*/
+    -webkit-user-select:none;/*webkit浏览器*/
+    -ms-user-select:none;/*IE10*/
+    -khtml-user-select:none;/*早期浏览器*/
+    user-select:none;
+}
+#bmh-form .form-actions-btn{
+    text-align: center;
+}
+#bmh-form .form-actions-btn .btnLogin{
+    color: #fff;
+    background-color: #69A61B;
+    padding: 8px 138px;
+}
+#bmh-form .form-actions-btn .btnLogin:hover{
+    filter:alpha(opacity=80); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.8; /*Firefox私有，透明度50%*/
+    opacity:0.8;/*其他，透明度50%*/
+}
+#bmh-form .create-account{
+    padding-top: 20px;
+    text-align: right;
+}
+#bmh-form .create-account a{
+    display: inline-block;
+    color: #69A61B;
+    text-decoration: none;
+}
+
+.footer{
+    margin-top: 2%;
+    margin-bottom: 20px;
+    border-top: 1px solid #AAAAAA;
+    text-align: center;
+}
+.footer .about{
+    padding-top: 30px;
+    font-size: 16px;
+}
+.footer .about a{
+    text-decoration: none;
+    color: #626161;
+}
+.footer .copyright{
+    padding-top: 20px;
+    font-size: 14px;
+    color: #888990;
+}
+.footer .copyright a{
+    text-decoration: none;
+    color: #888990;
+}
+.fp{
+    font-size: 18px;
+    color: #69A61B;
+    padding-top: 20px;
+}

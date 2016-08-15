@@ -1,0 +1,59 @@
+.content{
+    padding-top: 60px;
+}
+.content .return_login{
+    text-align: right;
+    font-family: 'Microsoft YaHei', 'Open Sans', sans-serif;
+    color: #848683;
+}
+.content .return_login a{
+    text-decoration: none;
+    color: #69A61B;
+}
+#bmh-reg-form{
+    width: 420px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+.content .form-group{
+    padding-bottom: 20px;
+}
+.content .setUserName{
+    font-size: 20px;
+    color: #565755;
+}
+.content .input-icon p{
+    font-size: 14px;
+    color: #999999;
+    padding-top: 15px;
+}
+.content .bmh-label{
+    font-size: 16px;
+    color: #848683;
+}
+.content .bmh-label .remind{
+    color: #F12858;
+    font-size: 20px;
+    vertical-align: middle;
+}
+.content .form-actions-btn{
+    text-align: center;
+}
+.content .btnReg{
+    color: #fff;
+    background-color: #69A61B;
+    padding: 8px 138px;
+}
+.content .form-actions-btn .btnReg:hover{
+    filter:alpha(opacity=80); /*IE滤镜，透明度50%*/
+    -moz-opacity:0.8; /*Firefox私有，透明度50%*/
+    opacity:0.8;/*其他，透明度50%*/
+}
+.help-block{
+    padding-top: 35px;
+    padding-left: 15px;
+    margin-bottom: 0;
+    position: relative;
+    left: 25%;
+    z-index: -1;
+}

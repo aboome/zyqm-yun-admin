@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>农业物联网智能管理后台-场地管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta name="MobileOptimized" content="320">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/Pagination-master/mricode.pagination.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style-layer.css">
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="qiminyun.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="header-inner fix">
+        <!-- BEGIN LOGO -->
+        <div class="navbar-brand">
+            <a href="index.html"><img src="assets/img/zyqm_logo3.png" alt=""/></a>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <img src="assets/img/menu-toggler.png" alt=""/>
+        </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <ul class="nav navbar-nav pull-right">
+            <li class="user_pic"><a href="javascript:;"><img src="assets/img/user_pic.jpg"></a></li>
+            <li class="dropdown user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                   data-close-others="true">
+				<span id="userName" class="username">
+				</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="javascript:;" id="changePsw"><i class="fa fa-key"></i> 修改密码</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="logOut"><i class="fa fa-sign-out"></i> 注销登录</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END USER LOGIN DROPDOWN -->
+        </ul>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>
+<!--修改密码-->
+<div id="changePassword" style="display: none">
+    <form id="modifyPasswordInfo">
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="oldPsw"><p>原密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入原密码..." id="oldPsw" name="oldPsw">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="newPsw"><p>新密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入新密码..." id="newPsw" name="newPsw">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="conformPsw"><p>确认密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入确认密码..." id="conformPsw" name="conformPsw">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div id="yhMenu" curIndex="3" class="page-sidebar-wrapper">
+        
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12 myPadding">
+                    <div class="portlet box myGreen">
+                        <div class="portlet-title titleHeight">
+                            <div class="caption">
+                                查询大棚列表
+                            </div>
+                        </div>
+                        <div class="portlet-body fix">
+                            <div class="tableTop fix">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <label class="col-md-1 control-label" for="pages">每页显示：</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="pages" class="selectpicker bs-select-hidden selStyle"
+                                                data-live-search="true" data-live-search-style="begins">
+                                            <option class="bs-title-option" value="10" selected>10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="30">40</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span>条</span>
+                                    </div>
+                                    <a href="javascript:;" class="addDp fr"><i class="fa fa-plus fa-fw"></i>&nbsp;新增</a>
+                                </form>
+
+                            </div>
+                            <table class="table table-bordered table-hover table-striped myTable">
+                                <thead>
+                                <tr>
+                                    <th>场地名称</th>
+                                    <th>解决方案</th>
+                                    <th>种植物</th>
+                                    <th>地理位置</th>
+                                    <th>拥有者</th>
+                                    <th>网关名称</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="fieldTb" class="data-container">
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                            <div id="pagination-container" class="m-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT -->
+    </div>
+</div>
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    中域齐民版权所有&nbsp;&copy;2015-2016&nbsp;ICP证：苏ICP备16006050号
+    <div class="footer-tools">
+		<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+		</span>
+    </div>
+</div>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<script src="assets/plugins/excanvas.min.js"></script>
+<script src="assets/scripts/html5shiv.js"></script>
+<![endif]-->
+<script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"
+        type="text/javascript"></script>
+<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/plugins/layer/layer.js" type="text/javascript"></script>
+<script src="assets/plugins/laypage/laypage.js" type="text/javascript"></script>
+<script src="assets/scripts/juicer-min.js" type="text/javascript"></script>
+<script src="assets/plugins/pagination.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<script src="assets/scripts/yhscripts/skip.js" type="text/javascript"></script>
+<script src="assets/scripts/yhscripts/yhGo.js" type="text/javascript"></script>
+<script src="assets/scripts/yhscripts/yhLayer.js" type="text/javascript"></script>
+<script src="assets/scripts/yhscripts/yhPage.js" type="text/javascript"></script>
+<script src="assets/scripts/app.js"></script>
+<script src="assets/scripts/global.js"></script>
+<script src="assets/scripts/fieldManage.js"></script>
+<script src="assets/scripts/yhscripts/yhMenu.js"></script>
+<script src="assets/scripts/jquery.validate.js" type="text/javascript"></script>
+<script src="assets/scripts/yhscripts/validate.js" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+
+<!-- tbody中内容 -->
+<script id="fieldTbTpl" type="text/template">
+    {@each list as it,index}
+    <tr>
+        <td style="display:none">${it.dpId}</td>
+        <td>${it.dpName}</td>
+        {@if it.solution === '01'}
+            <td>大田</td>
+        {@else if it.solution === '02'}
+            <td>大棚</td>
+        {@else if it.solution === '03'}
+            <td>渔业</td>
+        {@else if it.solution === '04'}
+            <td>畜牧业</td>
+        {@else if it.solution === '05'}
+            <td>林业</td>
+        {@else}
+            <td>未知</td>
+        {@/if}
+        <td>${it.dpAgName}</td>
+        <td>${it.dpAddr}</td>
+        <td>${it.ownerName}</td>
+        <td>${it.gatewayName}</td>
+        <td class="myControl">
+            <a href="javascript:;" data-dpId='${it.dpId}' data-id="${index}" class="modify">修改</a>
+            <a href="javascript:;" data-dpId='${it.dpId}' class="delete">删除</a>
+        </td>
+        <td style="display:none">${it.dpLong}</td>
+        <td style="display:none">${it.dpLat}</td>
+        <td style="display:none">${it.dpAddrDesc}</td>
+        <td style="display:none">${it.remark}</td>
+        <td style="display:none">${it.gatewayId}</td>
+    </tr>
+    {@/each}
+</script>
+<!-- 新增弹出层 -->
+<div id="addField" style="display: none">
+    <form id="addDpInfo">
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="addDpName"><p>场地名称：</p></label>
+                <input type="text" class="form-control selStyle" placeholder="场地名称..." id="addDpName" name="addDpName">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="addSolution"><p>解决方案：</p></label>
+                <select id="addSolution" name="addSolution" class="selectpicker bs-select-hidden selStyle2" data-live-search="true" data-live-search-style="begins">
+                    <option value="">-请选择-</option>
+                    <option value="01">大田</option>
+                    <option value="02">大棚</option>
+                    <option value="03">渔业</option>
+                    <option value="04">畜牧业</option>
+                    <option value="05">林业</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="addDpAgName"><p>种植物：</p></label>
+                <input type="text" class="form-control selStyle" placeholder="种植物..." id="addDpAgName" name="addDpAgName">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="addDpAddr"><p>地理位置：</p></label>
+                <input type="text" class="form-control selStyle" placeholder="地理位置..." id="addDpAddr" name="addDpAddr">
+            </div>
+        </div>
+        <div class="input-group">
+            <div id="gatewayInfo" class="input-icon">
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script id="gatewayTpl" type="text/template">
+    <label class="col-md-1 control-label" for="addGatewayName"><p>网关名称：</p></label>
+    <select id="addGatewayName" name="addGatewayName" class="selectpicker bs-select-hidden selStyle2" data-live-search="true" data-live-search-style="begins">
+        <option value="">-请选择-</option>
+        {@each gatewayList as it,index}
+        <option value="${it.gatewayId}">${it.gatewayName}</option>
+        {@/each}
+    </select>
+</script>
+
+<!-- 修改弹出层 -->
+<div id="modifyField" style="display:none">
+    <form id="modifyDpInfo">
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="modifyDpName"><p>场地名称：</p></label>
+                <input type="text" class="form-control selStyle" placeholder="场地名称..." id="modifyDpName" name="modifyDpName">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="modifySolution"><p>解决方案：</p></label>
+                <select id="modifySolution" name="modifySolution" class="selectpicker bs-select-hidden selStyle2" data-live-search="true" data-live-search-style="begins">
+                    <option value="">-请选择-</option>
+                    <option value="01">大田</option>
+                    <option value="02">大棚</option>
+                    <option value="03">渔业</option>
+                    <option value="04">畜牧业</option>
+                    <option value="05">林业</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="modifyDpAgName"><p>种植物：</p></label>
+                <input type="text" class="form-control selStyle" placeholder="种植物..." id="modifyDpAgName" name="modifyDpAgName">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="modifyDpAddr"><p>地理位置：</p></label>
+                <input type="text" class="form-control selStyle" placeholder="地理位置..." id="modifyDpAddr" name="modifyDpAddr">
+            </div>
+        </div>
+        <div class="input-group">
+            <label class="col-md-1 control-label" for="modifyGatewayName"><p>网关名称：</p></label>
+            <select id="modifyGatewayName" disabled="disabled" class="selectpicker bs-select-hidden selStyle2" data-live-search="true" data-live-search-style="begins">
+                <option id="modifyGatewayOption"></option>
+            </select>
+        </div>
+    </form>
+</div>
+
+<!-- 删除确认层 -->
+<script id="delOperation" type="text/template">
+    <div>
+        <p>
+            您确定要删除该条记录吗？
+        </p>
+    </div>
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

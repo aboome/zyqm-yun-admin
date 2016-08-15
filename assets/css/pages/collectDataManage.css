@@ -1,0 +1,143 @@
+.tableTop {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+}
+.tableTop .refresh{
+    text-decoration: none;
+}
+
+.collectInfo {
+    margin: 0 auto;
+}
+.dpInfo {
+    border: 1px solid #DDDDDD;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 30px;
+    padding: 0;
+    min-width: 460px;
+}
+.bmhInfo{
+    /*overflow-y: scroll;*/
+    background-color: #F9F9F9;
+}
+@media (min-width: 1200px) {
+    .dpInfo{
+        width: 27.5%;
+    }
+}
+.dpInfo h2 {
+    color: #62605D;
+    font-size: 18px;
+    font-family: 'Microsoft YaHei', 'Open Sans', sans-serif;
+    background-color: #E0ECDB;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 10px 20px;
+    height: 38px;
+}
+.sensorWrap {
+    font-size: 14px;
+    color: #868582;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 20px;
+    min-width: 300px;
+}
+.sensorType{
+    display: inline-block;
+    max-width: 120px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.nameH {
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #9D9D9B;
+}
+.detailH {
+    padding: 10px 20px 10px 0;
+}
+.sensor {
+    padding: 0;
+    min-height: 110px;
+}
+.sensorH {
+    min-height: 78px;
+}
+.sensor .sensorName {
+    background-color: #FFFFFF;
+}
+.sensor .sensorName img {
+    width: 16px;
+}
+.sensor .sensorVal {
+    font-size: 20px;
+    color: #69A61D;
+}
+.sensor .sensorVal .currentVal {
+    font-style:normal;
+
+}
+.sensorAuto{
+    float: left;
+}
+.settingBtn{
+    display: inline-block;
+    text-decoration: none !important;
+    border: 1px solid #7EB23A;
+    font-size: 12px;
+    padding: 4px 10px 3px 10px;
+    border-radius: 20px;
+    float: right;
+    margin-top: -2px;
+}
+.settingBtn img {
+    width: 18px;
+    margin-right: 6px;
+    margin-top: -3px;
+}
+.sensor .warningVal {
+    font-size: 12px;
+    color: #868582;
+    float: right;
+}
+.sensor .warningVal span {
+    display: block;
+    padding: 5px 0;
+}
+.sensor .warningVal span i{
+    font-style:normal;
+}
+.setInput{
+    text-align: left;
+}
+.setInput label,.setInput input{
+    width: 80px !important;
+}
+.top,.bottom{
+    overflow: auto;
+}
+.top{
+    float: left;
+    margin-left: 20px;
+    padding-top: 20px;
+    border-right: 1px dashed #BBBBBB;
+}
+.bottom{
+    float: right;
+    margin-left:20px;
+    padding-top: 20px;
+}
+.setInput p{
+    /*float: left;*/
+    margin-left: -10px;
+    padding-right: 30px;
+}
+select#group{
+    display: inline;
+}
+.clear{
+    clear: none;
+}

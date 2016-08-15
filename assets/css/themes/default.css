@@ -1,0 +1,323 @@
+/***
+Default theme
+***/
+.fl{float: left;}
+.fr{float: right;}
+.fix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+/***
+Reset and overrides  
+***/
+body {
+  background-color: #F9F9F9 !important;
+}
+/***
+Page header
+***/
+.header {
+  filter: none !important;
+  background-image: none !important;
+  background-color: #69A61B !important;
+}
+.header .btn-navbar {
+  background-color: #69A61B !important;
+}
+.header .navbar-nav .dropdown-toggle:hover,
+.header .navbar-nav .dropdown.open .dropdown-toggle {
+  background-color: #F00056 !important;
+}
+.header .navbar-nav li.dropdown .dropdown-toggle i {
+  color: #FFFFFF !important;
+}
+
+/***
+Header Search
+***/
+
+/*.header .weather-form .form-control{
+  color: #999;
+  background-color: #30A885;  
+}
+
+.header .weather-form .submit {
+  background: url(../../img/weather-icon.png);
+}*/
+
+/***
+Hor menu
+***/
+/*
+.header .hor-menu ul.nav li a {
+  color: #999;
+}
+
+.header .hor-menu ul.nav li.open > a,
+.header .hor-menu ul.nav li > a:hover,
+.header .hor-menu ul.nav li > a:focus {
+  color: #fff;
+  background: #383838;
+}
+
+.header .hor-menu .dropdown-menu li:hover > a,
+.header .hor-menu ul.nav li.active > a,
+.header .hor-menu ul.nav li.active > a:hover {
+  color: #fff;
+  background: #e02222 !important; 
+}
+
+.header .hor-menu ul.nav li.current > a,
+.header .hor-menu ul.nav li.current > a:hover {
+  color: #fff;
+  background: #e02222 !important; 
+}
+
+.header .hor-menu .dropdown-menu {  
+    background: #383838;
+}
+.header .hor-menu .dropdown-menu li > a {    
+    color: #999;
+}
+
+.header .hor-menu .hor-menu-weather-form-toggler.off {
+   background: #383838 url(../../img/hor-menu-weather-close.png) no-repeat center;
+}
+
+.header .hor-menu .weather-form {
+  background:#383838; 
+}
+
+.header .hor-menu .weather-form form input {
+  color: #999;
+}
+
+.header .hor-menu .weather-form .btn {
+  color: #999;
+  background: url(../../img/weather-icon.png) no-repeat center;
+}
+
+*/
+
+/* WebKit browsers */
+/*.header .hor-menu .weather-form form input::-webkit-input-placeholder {
+    color: #999;
+}
+ /* Mozilla Firefox 4 to 18 */
+/*.header .hor-menu .weather-form form input:-moz-placeholder {
+    color: #999;
+}
+/* Mozilla Firefox 19+ */
+/*.header .hor-menu .weather-form form input::-moz-placeholder {
+    color: #999;
+}
+ /* Internet Explorer 10+ */
+/*.header .hor-menu .weather-form form input:-ms-input-placeholder {
+    color: #999;
+}
+
+
+
+/***
+Page sidebar
+***/
+.page-sidebar {
+  background-color: #F9F9F9;
+}
+ul.page-sidebar-menu > li > a {
+  border-top: 1px solid #E3E3E3 !important;
+  color: #3B3C39 !important;
+}
+ul.page-sidebar-menu > li:last-child > a {
+  border-bottom: 1px solid transparent !important;
+}
+ul.page-sidebar-menu > li a i {
+  color: #969696;
+}
+ul.page-sidebar-menu > li.open > a,
+ul.page-sidebar-menu > li > a:hover,
+ul.page-sidebar-menu > li:hover > a {
+  background: #EEEEEE;
+}
+ul.page-sidebar-menu > li.active > a {
+  background: #69A61B !important;
+  border-top-color: transparent !important;
+  color: #ffffff;
+}
+ul.page-sidebar-menu > li.active > a i {
+  color: #ffffff;
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li:first-child > a {
+  border-top: 0px !important;
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
+  color: #777777 !important;
+  background: #EEEEEE !important;
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
+  background: #EEEEEE !important;
+}
+/* 3rd level sub menu */
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li > a:hover,
+ul.page-sidebar-menu > li > ul.sub-menu li.open > a {
+  color: #ffffff !important;
+  background: #575757 !important;
+}
+/* font color for all sub menu links*/
+ul.page-sidebar-menu li > ul.sub-menu > li > a {
+  color: #575757;
+}
+/* menu arrows */
+ul.page-sidebar-menu > li > a .arrow:before,
+ul.page-sidebar-menu > li > a .arrow.open:before {
+  color: #7d7d7d !important;
+}
+ul.page-sidebar-menu > li > ul.sub-menu a .arrow:before,
+ul.page-sidebar-menu > li > ul.sub-menu a .arrow.open:before {
+  color: #707070 !important;
+}
+ul.page-sidebar-menu > li > a > .arrow.open:before {
+  color: #8a8a8a !important;
+}
+ul.page-sidebar-menu > li.active > a .arrow:before,
+ul.page-sidebar-menu > li.active > a .arrow.open:before {
+  color: #ffffff !important;
+}
+/***
+Sidebar toggler
+***/
+.sidebar-toggler {
+  background-image: url(../../img/sidebar-toggler.png);
+  background-color: #fff;
+}
+
+/* sub menu bg color on hover menu item */
+.page-sidebar-closed ul.page-sidebar-menu > li:hover .sub-menu {
+  background-color: #3d3d3d;
+}
+/***
+Footer 
+***/
+.footer .footer-inner {
+  color: #999999;
+}
+.footer .footer-tools .go-top {
+  background-color: #4f4f4f;
+}
+.footer .footer-tools .go-top:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.footer .footer-tools .go-top i {
+  color: #8a8a8a;
+}
+/***
+Footer Layouts (new in v1.3)
+***/
+/* begin:fixed footer */
+.page-footer-fixed .footer {
+  background-color: #242424;
+}
+.page-footer-fixed .footer .footer-inner {
+  color: #999999;
+}
+.page-footer-fixed .footer .footer-tools .go-top {
+  background-color: #4f4f4f;
+}
+.page-footer-fixed .footer .footer-tools .go-top i {
+  color: #8a8a8a;
+}
+/* end:fixed footer */
+/***
+Gritter Notifications 
+***/
+.gritter-top {
+  background: url(../../plugins/gritter/images/gritter.png) no-repeat left -30px !important;
+}
+.gritter-bottom {
+  background: url(../../plugins/gritter/images/gritter.png) no-repeat left bottom !important;
+}
+.gritter-item {
+  display: block;
+  background: url(../../plugins/gritter/images/gritter.png) no-repeat left -40px !important;
+}
+.gritter-close {
+  background: url(../../plugins/gritter/images/gritter.png) no-repeat left top !important;
+}
+.gritter-title {
+  text-shadow: none !important;
+  /* Not supported by IE :( */
+
+}
+/* for the light (white) version of the gritter notice */
+.gritter-light .gritter-item,
+.gritter-light .gritter-bottom,
+.gritter-light .gritter-top,
+.gritter-light .gritter-close {
+  background-image: url(../../plugins/gritter/images/gritter-light.png) !important;
+}
+.gritter-item-wrapper a {
+  color: #18a5ed;
+}
+.gritter-item-wrapper a:hover {
+  color: #0b6694;
+}
+/* begin: boxed page */
+@media (min-width: 992px) {
+  .page-boxed {
+    background-color: #2e2e2e !important;
+  }
+  .page-boxed .page-container {
+    background-color: #3d3d3d;
+    border-left: 1px solid #5e5e5e;
+    border-bottom: 1px solid #5e5e5e;
+  }
+  .page-boxed.page-sidebar-reversed .page-container {
+    border-left: 0;
+    border-right: 1px solid #5e5e5e;
+  }
+  .page-boxed.page-sidebar-fixed .page-container {
+    border-left: 0;
+    border-bottom: 0;
+  }
+  .page-boxed.page-sidebar-reversed.page-sidebar-fixed .page-container {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .page-boxed.page-sidebar-fixed .page-sidebar {
+    border-left: 1px solid #5e5e5e;
+  }
+  .page-boxed.page-sidebar-reversed.page-sidebar-fixed .page-sidebar {
+    border-right: 1px solid #5e5e5e;
+    border-left: 0; 
+  }
+  .page-boxed.page-sidebar-fixed.page-footer-fixed .footer {
+    background-color: #2e2e2e !important;
+  }
+}
+/* end: boxed page */
+/***
+Landscape phone to portrait tablet
+***/
+@media (max-width: 991px) {
+  /***
+    page sidebar
+    ***/
+  .page-sidebar {
+    background-color: #F9F9F9 !important;
+  }
+  ul.page-sidebar-menu > li > a {
+    border-top: 1px solid #E3E3E3 !important;
+  }
+  ul.page-sidebar-menu > li:last-child > a {
+    border-bottom: 0 !important;
+  }
+  .page-sidebar .sidebar-search input {
+    background-color: #F9F9F9 !important;
+  }
+  ul.page-sidebar-menu > li.open > a,
+  ul.page-sidebar-menu > li > a:hover,
+  ul.page-sidebar-menu > li:hover > a {
+    background: #EEEEEE;
+  }
+}

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>农业物联网智能管理后台-智能设备监控管理</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta name="MobileOptimized" content="320">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style-layer.css">
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="qiminyun.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="header-inner fix">
+        <!-- BEGIN LOGO -->
+        <div class="navbar-brand">
+            <a href="index.html"><img src="assets/img/zyqm_logo3.png" alt=""/></a>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <img src="assets/img/menu-toggler.png" alt=""/>
+        </a>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <ul class="nav navbar-nav pull-right">
+            <li class="user_pic"><a href="javascript:;"><img src="assets/img/user_pic.jpg"></a></li>
+            <li class="dropdown user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                   data-close-others="true">
+				<span id="userName" class="username">
+				</span>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="javascript:;" id="changePsw"><i class="fa fa-user"></i> 修改密码</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" id="logOut"><i class="fa fa-key"></i> 注销登录</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- END USER LOGIN DROPDOWN -->
+        </ul>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
+</div>
+<!--修改密码-->
+<div id="changePassword" style="display: none">
+    <form id="modifyPasswordInfo">
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="oldPsw"><p>原密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入原密码..." id="oldPsw" name="oldPsw">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="newPsw"><p>新密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入新密码..." id="newPsw" name="newPsw">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-icon">
+                <label class="col-md-1 control-label" for="conformPsw"><p>确认密码：</p></label>
+                <input type="password" class="form-control selStyle" placeholder="输入确认密码..." id="conformPsw" name="conformPsw">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div id="yhMenu" curIndex="7" class="page-sidebar-wrapper">
+
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12 myPadding">
+                    <div class="portlet box myGreen">
+                        <div class="portlet-title titleHeight">
+                            <div class="caption">
+                                查询条件
+                            </div>
+                        </div>
+                        <div class="portlet-body fix">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label class="col-md-1 control-label" for="dpListInUserId">场地名称：</label>
+                                </div>
+                                <div id="dpListInUserId" class="form-group">
+
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 myPadding">
+                    <div class="portlet box myGreen">
+                        <div class="portlet-title titleHeight">
+                            <div class="caption">
+                                控制设备列表
+                            </div>
+                        </div>
+                        <div class="portlet-body fix">
+                            <div class="tableTop fix">
+                                <form class="form-inline">
+                                    <div class="form-group"></div>
+                                    <a href="javascript:;" class="refresh fr" onclick="refreshDeviceStatus();">&nbsp;立即更新设备状态</a>
+                                </form>
+
+                            </div>
+                            <table class="table table-bordered table-hover table-striped myTable">
+                                <thead>
+                                <tr>
+                                    <th>控制设备名称</th>
+                                    <th>场地名称</th>
+                                    <th>设备状态</th>
+                                    <th>设备状态上报时间</th>
+                                    <th>开启方向</th>
+                                    <th>设备IE号</th>
+                                    <th>控制命令</th>
+                                    <th>命令执行结果</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="deviceListTb">
+
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CONTENT -->
+    </div>
+</div>
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    中域齐民版权所有&nbsp;©2015-2016&nbsp;ICP证：苏ICP备16006050号
+    <div class="footer-tools">
+		<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+		</span>
+    </div>
+</div>
+<script id="deviceListTbTpl" type="text/template">
+    {@each list as it,index}
+    <tr>
+        <td class="dpId" style="display:none">${it.dpId}</td>
+        <td>${it.controlDeviceName}</td>
+        <td>${it.dpName}</td>
+        <td>
+            {@if it.deviceStatus=='' || it.deviceStatus==null}
+            失联
+            {@else if it.deviceStatus == '1'}
+            运行中
+            {@else}
+            已关闭
+            {@/if}
+        </td>
+        <td>${it.deviceReportTime}</td>
+        <td>
+            {@if it.deviceDirect=='' || it.deviceDirect==null}
+
+            {@else if it.deviceDirect == '1'}
+            开启
+            {@else}
+            闭合
+            {@/if}
+        </td>
+        <td>${it.controlDeviceUuid}</td>
+        <td>
+            {@if it.taskCommand=='' || it.taskCommand==null}
+
+            {@else if it.taskCommand == '0'}
+            关闭设备
+            {@else if it.taskCommand == '1' && it.taskDirect == '1'}
+            设备打开启动
+            {@else if it.taskCommand == '1' && it.taskDirect == '0'}
+            设备闭合启动
+            {@else}
+
+            {@/if}
+        </td>
+        <td class="taskStatusMonitor" taskStatus="${it.taskStatus}">
+            {@if it.taskStatus=='' || it.taskStatus==null}
+
+            {@else if it.taskStatus == '00'}
+            命令执行中
+            {@else if it.taskStatus == '10'}
+            命令执行成功
+            {@else}
+            命令执行失败
+            {@/if}
+        </td>
+        <td class="myControl">
+            {@if it.taskStatus=='' || it.taskStatus==null && it.deviceStatus == '1'}
+            <a href="javascript:;" class="openDev disabled">开启</a>
+            <a href="javascript:;" onclick="closeDevice(${it.controlDeviceId})" class="closeDev">关闭</a>
+            {@else if it.taskStatus=='' || it.taskStatus==null && it.deviceStatus == '0'}
+            <a href="javascript:;" onclick="openDevice(${it.controlDeviceId})" data-num="${it.controlDeviceEnum}" class="openDev">开启</a>
+            <a href="javascript:;" class="closeDev disabled">关闭</a>
+            {@else if it.taskStatus=='' || it.taskStatus==null && it.deviceStatus == ''}
+            <a href="javascript:;" class="openDev disabled">开启</a>
+            <a href="javascript:;" class="closeDev disabled">关闭</a>
+            {@else if it.taskStatus=='' || it.taskStatus==null && it.deviceStatus == null}
+            <a href="javascript:;" class="openDev disabled">开启</a>
+            <a href="javascript:;" class="closeDev disabled">关闭</a>
+            {@else if it.taskStatus == '00'}
+            <a href="javascript:;" class="openDev disabled">开启</a>
+            <a href="javascript:;" class="closeDev disabled">关闭</a>
+            {@else if it.taskStatus == '10'}
+            <a href="javascript:;" onclick="openDevice(${it.controlDeviceId})" data-num="${it.controlDeviceEnum}" class="openDev">开启</a>
+            <a href="javascript:;" onclick="closeDevice(${it.controlDeviceId})" class="closeDev">关闭</a>
+            {@else}
+            <a href="javascript:;" onclick="restartTask(${it.controlDeviceId})" class="openDev">重新执行</a>
+            <a href="javascript:;" onclick="cancelTask(${it.controlDeviceId})" class="closeDev">取消</a>
+            {@/if}
+
+        </td>
+    </tr>
+    {@/each}
+</script>
+<script id="dpListTpl" type="text/template">
+    <select id="changDpInfo" class="selectpicker bs-select-hidden selStyle"
+            data-live-search="true"
+            data-live-search-style="begins" title="Please select a lunch ...">
+        <option class="bs-title-option" value="-1">选择场地</option>
+        {@each list as it,index}
+        <option value=${it.dpId}>${it.dpName}</option>
+        {@/each}
+    </select>
+
+</script>
+
+<div id="openDevice" class="display-none">
+    <form id="openDeviceInfo">
+        <div class="modelType">
+            <div class="input-group">
+                <label class="control-label" for="modelType">模式：</label>
+                <select id="modelType" name="modelType" class="selectpicker bs-select-hidden selStyle" data-live-search="true" data-live-search-style="begins">
+                    <option class="bs-title-option" value="-1">选择模式</option>
+                    <option class="bs-title-option" value="0">手动开启</option>
+                    <option class="bs-title-option" value="1">定时开启</option>
+                </select>
+            </div>
+        </div>
+        <div class="director">
+            <div class="input-group">
+            <label class="control-label" for="direct">方向：</label>
+            <select id="direct" name="direct" class="selectpicker bs-select-hidden selStyle" data-live-search="true" data-live-search-style="begins">
+                <option class="bs-title-option" value="-1">选择方向</option>
+                <option class="bs-title-option" value="1">开启</option>
+                <option class="bs-title-option" value="0">闭合</option>
+            </select>
+                </div>
+        </div>
+        <div class="time" style="display: none">
+            <div class="input-group">
+                <div class="input-icon">
+                    <label class="control-label" for="time">时长：</label>
+                    <input type="text" id="time" name="time" value=""><span>分钟</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/plugins/respond.min.js"></script>
+<script src="assets/plugins/excanvas.min.js"></script>
+<script src="assets/scripts/html5shiv.js"></script>
+<![endif]-->
+<script src="assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"
+        type="text/javascript"></script>
+<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/plugins/layer/layer.js" type="text/javascript"></script>
+<script src="assets/scripts/juicer-min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<script src="assets/scripts/yhscripts/skip.js" type="text/javascript"></script>
+<script src="assets/scripts/app.js"></script>
+<script src="assets/scripts/global.js"></script>
+<script src="assets/scripts/yhscripts/yhGo.js"></script>
+<script src="assets/scripts/smartDeviceManage.js"></script>
+<script src="assets/scripts/yhscripts/yhMenu.js"></script>
+<script src="assets/scripts/yhscripts/yhLayer.js"></script>
+<script src="assets/scripts/jquery.validate.js" type="text/javascript"></script>
+<script src="assets/scripts/yhscripts/validate.js" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function () {
+        App.init();
+
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+</html>
