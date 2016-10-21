@@ -176,13 +176,10 @@ $('.settingBtn').live('click', function () {
 		btn: ['确定', '取消'],
 		yes: function (index, layero) {
 			setWarning();
-			layer.close(index);
 		}, btn2: function (index, layero) {
-			
-			window.location.reload();
+
 		}
 	});
-
 	autoCom(this);
 });
 
@@ -199,14 +196,95 @@ var setWarning = function (){
 	var topCondition = $('#topStop').val();
 	var bottomCondition = $('#botStop').val();
 
-	if (top !== undefined && top != '' && bottom != undefined && bottom != '') {
-		if (top <= bottom) {
+
+	function NumberCheck(num)
+	{
+		var re=/^\d*\.{0,1}\d{0,1}$/;
+		return re.exec(num) != null;
+	}
+
+	if (top != undefined && top != '' && bottom != undefined && bottom != '') {
+		if (Number(top) <= Number(bottom)) {
 			layer.msg("预警上限不能低于预警下限值！", {
-				time: 2000,
+				time: 50000,
 				btn: ['知道了']});
 			return;
 		}
 	}
+
+	if (top != undefined && top != '') {
+		if('-1' == topProcess){
+			layer.msg("请选择处理方式！", {
+				time: 50000,
+				btn: ['知道了']});
+			return;
+		};
+		if(!NumberCheck(Number(top))){
+			layer.msg("上限只能输入数字且只能有一位小数！", {
+				time: 50000,
+				btn: ['知道了']});
+			return;
+		}
+	}
+	if (bottom != undefined && bottom != '') {
+		if('-1' == bottomProcess){
+			layer.msg("请选择处理方式！", {
+				time: 50000,
+				btn: ['知道了']});
+			return;
+		};
+		if(!NumberCheck(Number(bottom))){
+			layer.msg("下限只能输入数字且只能有一位小数！", {
+				time: 50000,
+				btn: ['知道了']});
+			return;
+		}
+	}
+
+	if('1' == topProcess){
+		if('-1' == topGroupId || topGroupId == undefined){
+			$('.valiTips').html('请选择分组').css('display', 'block');
+			return;
+		}
+		if('' == topCondition){
+			$('.valiTips').html('终止条件不能为空').css('display', 'block');
+			return;
+		} else if(!NumberCheck(Number(topCondition))){
+			$('.valiTips').html('终止条件只能为数字且只包含一位小数').css('display', 'block');
+			return;
+		}
+		if('-1' == topCommand || topCommand == undefined){
+			$('.valiTips').html('请选择开关').css('display', 'block');
+			return;
+		}
+		if(top < topCondition){
+			$('.valiTips').html('上限终止条件不能大于预警上限').css('display', 'block');
+			return;
+		}
+	}
+
+	if('1' == bottomProcess){
+		if('-1' == bottomGroupId || bottomGroupId == undefined){
+			$('.valiTips').html('请选择分组').css('display', 'block');
+			return;
+		}
+		if('' == bottomCondition){
+			$('.valiTips').html('终止条件不能为空').css('display', 'block');
+			return;
+		} else if(!NumberCheck(Number(bottomCondition))){
+			$('.valiTips').html('终止条件只能为数字且只包含一位小数').css('display', 'block');
+			return;
+		}
+		if('-1' == bottomCommand || bottomCommand == undefined){
+			$('.valiTips').html('请选择开关').css('display', 'block');
+			return;
+		}
+		if(bottom > bottomCondition){
+			$('.valiTips').html('下限终止条件不能小于预警下限').css('display', 'block');
+			return;
+		}
+	}
+
 
 	settingWarning.top = top;
 	settingWarning.bottom = bottom;
@@ -224,17 +302,18 @@ var setWarning = function (){
 };
 
 var setWarningCallback = function (result) {
+	YHLayer.closeAllLayer();
 	if (result != null && result != '') {
 		var resultObj = JSON.parse(result);
 		if (resultObj.parameter == null || resultObj.parameter == '') {
 		} else {
 			if(resultObj.parameter.status == '0000'){
 				layer.msg(resultObj.parameter.message, {icon: 1, time: 500}, function () {
-					window.location.reload();
+					querySensorDataIdListAll();
 				});
 			} else {
 				layer.msg(resultObj.parameter.message, {icon: 2, time: 500}, function () {
-					window.location.reload();
+					querySensorDataIdListAll();
 				});
 			}
 		}
@@ -263,8 +342,12 @@ var queryGroupListTopCallback = function(result){
 			var tableHtml = juicer(tpl, dataTableList);
 			$("#selectGroupTop").append(tableHtml);
 
-			autoTop_00();
-			autoTop_01();
+
+			if(settingWarning.systemEnum == '00'){
+				autoTop_00();
+			} else if(settingWarning.systemEnum == '01'){
+				autoTop_01();
+			}
 		}
 	} else {
 		layer.msg("请求服务器异常！");
@@ -281,8 +364,11 @@ var queryGroupListBotCallback = function(result){
 			var tableHtml = juicer(tpl, dataTableList);
 			$("#selectGroupBot").append(tableHtml);
 
-			autoBot_00();
-			autoTop_01();
+			if(settingWarning.systemEnum == '00'){
+				autoBot_00();
+			} else if(settingWarning.systemEnum == '01'){
+				autoBot_01();
+			}
 		}
 	} else {
 		layer.msg("请求服务器异常！");

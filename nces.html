@@ -121,10 +121,10 @@
                                 <li role="presentation"><a href="#" role="tab" data-toggle="tab" id="light">光照</a></li>
                             </ul>
                             <!-- Tab panes -->
-                            <div class="tab-content tubiao">
+                            <div class="tab-content tubiao clearfix">
                                 <div role="tabpanel" class="tab-pane active" id="wendu">
                                    <div>
-                                       <form class="form-inline" style="padding-top: 12px">
+                                       <form class="form-inline" style="padding-top: 5px">
                                             <p>开始时间：</p>
                                             <input id="d4311" class="Wdate" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})" value=""/>
                                             <p>结束时间：</p>
@@ -136,12 +136,15 @@
                                             <div class="form-group" id="dpListInUserId">
 
                                             </div>
-                                            <a type="submit" class="btn btn-default searchBtn" id="query"><i class="fa fa-search fa-fw"></i>&nbsp;查询</a>
+                                            <a type="submit" class="btn btn-default searchBtn" data-value="00" id="query"><i class="fa fa-search fa-fw"></i>&nbsp;查询</a>
                                        </form>
                                        <p class="total"></p>
                                    </div>
                                     <div id="main" style="height: 600px">
 
+                                    </div>
+                                    <div id="displayDiv" style="">
+                                        没有数据...
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +198,7 @@
 <script src="assets/scripts/yhscripts/yhMenu.js"></script>
 <script src="assets/plugins/echarts.min.js"></script>
 <script src="assets/scripts/yhscripts/common.js"></script>
-<script src="assets/scripts/yhscripts/nces.js"></script>
+<script src="assets/scripts/nces.js"></script>
 <script>
     jQuery(document).ready(function () {
         App.init();

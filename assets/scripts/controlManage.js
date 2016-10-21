@@ -87,15 +87,6 @@ $(function () {
             content: $('#modifyControl'),
             btn: ['确定', '取消'],
             yes: function (index, layero) {
-                function deProtocol() {
-                    if ($('#rdo-1').attr('checked')) {
-                        return deviceProtocol = '10000000';
-                    } else if ($('#rdo-2').attr('checked')) {
-                        return deviceProtocol = '01000000';
-                    } else if ($('#rdo-3').attr('checked')) {
-                        return deviceProtocol = '00100000';
-                    }
-                }
 
                 var modifiedControlName = $(layero).find('#controlName').val();
 
@@ -105,9 +96,8 @@ $(function () {
                     modifyControlDevice.deviceProtocol = '1100';
                 } else if (switchModel == 'SWITCH-103') {
                     modifyControlDevice.deviceProtocol = '1000';
-                } else {
-                    modifyControlDevice.deviceProtocol = deProtocol();
                 }
+
                 modifyControlDevice.deviceName = modifiedControlName;
 
                 if(!$('#modifyControlInfo').valid()){

@@ -27,6 +27,7 @@
     <link href="assets/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
     <link href="assets/css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/pages/smartDeviceManage.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/style-layer.css">
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="qiminyun.ico"/>
@@ -280,23 +281,27 @@
     <form id="openDeviceInfo">
         <div class="modelType">
             <div class="input-group">
-                <label class="control-label" for="modelType">模式：</label>
-                <select id="modelType" name="modelType" class="selectpicker bs-select-hidden selStyle" data-live-search="true" data-live-search-style="begins">
-                    <option class="bs-title-option" value="-1">选择模式</option>
-                    <option class="bs-title-option" value="0">手动开启</option>
-                    <option class="bs-title-option" value="1">定时开启</option>
-                </select>
+                <div class="input-icon">
+                    <label class="control-label" for="modelType">模式：</label>
+                    <select id="modelType" name="modelType" class="selectpicker bs-select-hidden selStyle" data-live-search="true" data-live-search-style="begins">
+                        <option class="bs-title-option" value="">选择模式</option>
+                        <option class="bs-title-option" value="10">手动开启</option>
+                        <option class="bs-title-option" value="20">定时开启</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="director">
             <div class="input-group">
-            <label class="control-label" for="direct">方向：</label>
-            <select id="direct" name="direct" class="selectpicker bs-select-hidden selStyle" data-live-search="true" data-live-search-style="begins">
-                <option class="bs-title-option" value="-1">选择方向</option>
-                <option class="bs-title-option" value="1">开启</option>
-                <option class="bs-title-option" value="0">闭合</option>
-            </select>
+                <div class="input-icon">
+                    <label class="control-label" for="direct">方向：</label>
+                    <select id="direct" name="direct" class="selectpicker bs-select-hidden selStyle" data-live-search="true" data-live-search-style="begins">
+                        <option class="bs-title-option" value="">选择方向</option>
+                        <option class="bs-title-option" value="1">开启</option>
+                        <option class="bs-title-option" value="0">闭合</option>
+                    </select>
                 </div>
+            </div>
         </div>
         <div class="time" style="display: none">
             <div class="input-group">

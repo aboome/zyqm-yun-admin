@@ -39,7 +39,8 @@ function queryUserDpListById() {
 }
 
 var queryDeviceListCallBack = function(result) {
-	if (result != null && result != '') {
+	YHLayer.closeAllLayer();
+    if (result != null && result != '') {
 		var resultObj = JSON.parse(result);
 		if (resultObj.parameter.list == null || resultObj.parameter.list == '') {
             $("#deviceListTb").html('');
@@ -58,7 +59,8 @@ var queryDeviceListCallBack = function(result) {
 		}
 
 	} else {
-		layer.msg("请求服务器异常！");
+        layer.msg('请求服务器异常！', {icon: 0, time: 1000}, function () {
+        });
 	}
 };
 
@@ -78,7 +80,8 @@ var queryDpListCallBack = function(result) {
 		}
 
 	} else {
-		layer.msg("请求服务器异常！");
+        layer.msg('请求服务器异常！', {icon: 0, time: 1000}, function () {
+        });
 	}
 };
 
@@ -111,8 +114,8 @@ function openDevice(deviceId) {
 	var content = $('#openDevice');
 
     $('.help-block').remove();
-    $('#modelType').val(-1);
-    $('#direct').val(-1);
+    $('#modelType').val('');
+    $('#direct').val('');
     $('#time').val('');
     $('.time').css('display', 'none');
 
@@ -131,14 +134,19 @@ function openDevice(deviceId) {
             }
 
 		    var type = $('#modelType').val();
-			var direct = $('#direct').val();
+
+            if('' == $('#direct').val()||null ==$('#direct').val()){
+                var direct = '0';
+            }else {
+                var direct = $('#direct').val();
+            }
 			var time = $('#time').val();
 
 			openDeviceCon.controlDeviceId = deviceId;
 			openDeviceCon.command = '1';
 			openDeviceCon.direct = direct;
 			openDeviceCon.type = type;
-			openDeviceCon.taskTime = time;
+			openDeviceCon.taskTime = time * 60;
 			YHLayer.loading();
 			YhHttp.init(YhHttpServiceCode.OPEN_DEVICE.CODE);
 			YhHttp.send(openDeviceCon, openDeviceConCallBack);
@@ -152,7 +160,7 @@ function openDevice(deviceId) {
 };
 $('#modelType').change(function(){
 	var openType = $('#modelType').val();
-	if(openType == '1'){
+	if(openType == '20'){
 		$('.time').css('display', 'block');
 	}else{
 		$('.time').css('display', 'none');
@@ -164,17 +172,21 @@ var openDeviceConCallBack = function(result) {
 	if (result != null && result != '') {
 		var resultObj = JSON.parse(result);
 		if (resultObj.parameter.status == '0000') {
-			layer.msg("设备开启成功！");
-
-			queryDeviceListByDpId();
-			return;
+            YHLayer.closeAllLayer();
+		    layer.msg('打开设备操作成功!', {icon: 1, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} else {
-			layer.msg("设备开启失败！");
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg(resultObj.parameter.message, {icon: 2, time: 1000}, function () {
+                queryOperator (10, 1);
+            });
 		} 
 
 	} else {
-		layer.msg("请求服务器异常！");
+        YHLayer.closeAllLayer();
+	    layer.msg('请求服务器异常！', {icon: 0, time: 1000}, function () {
+        });
 	}
 };
 	
@@ -190,26 +202,31 @@ function closeDevice(index) {
 	}
 
 	closeDeviceCon.controlDeviceId = index;
-
+    YHLayer.loading();
 	YhHttp.init(YhHttpServiceCode.CLOSE_DEVICE.CODE);
 	YhHttp.send(closeDeviceCon, closeDeviceConCallBack);
-};
+}
 
 var closeDeviceConCallBack = function(result) {
 	if (result != null && result != '') {
 		var resultObj = JSON.parse(result);
 		if (resultObj.parameter.status == '0000') {
-			layer.msg("关闭设备成功！");
-
-			queryDeviceListByDpId();
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg('关闭设备操作成功!', {icon: 1, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} else {
-			layer.msg("关闭设备失败！");
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg(resultObj.parameter.message, {icon: 2, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} 
 
 	} else {
-		layer.msg("请求服务器异常！");
+        YHLayer.closeAllLayer();
+        layer.msg('请求服务器异常！', {icon: 0, time: 1000}, function () {
+            queryDeviceListByDpId();
+        });
 	}
 };
 
@@ -225,25 +242,31 @@ function restartTask(index) {
 	}
 
 	restartTaskCon.controlDeviceId = index;
-
+    YHLayer.loading();
 	YhHttp.init(YhHttpServiceCode.RESTART_TASK.CODE);
 	YhHttp.send(restartTaskCon, restartTaskConCallBack);
-};
+}
 
 var restartTaskConCallBack = function(result) {
 	if (result != null && result != '') {
 		var resultObj = JSON.parse(result);
 		if (resultObj.parameter.status == '0000') {
-			layer.msg("重新开启成功！");
-			queryDeviceListByDpId();
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg('重新执行操作成功!', {icon: 1, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} else {
-			layer.msg("重新开启失败！");
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg(resultObj.parameter.message, {icon: 2, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} 
 
 	} else {
-		layer.msg("请求服务器异常！");
+        YHLayer.closeAllLayer();
+        layer.msg('请求服务器异常！', {icon: 0, time: 1000}, function () {
+            queryDeviceListByDpId();
+        });
 	}
 };
 
@@ -259,25 +282,31 @@ function cancelTask(index) {
 	}
 
 	cancelTaskCon.controlDeviceId = index;
-
+    YHLayer.loading();
 	YhHttp.init(YhHttpServiceCode.CANCEL_TASK.CODE);
 	YhHttp.send(cancelTaskCon, cancelTaskConCallBack);
-};
+}
 
 var cancelTaskConCallBack = function(result) {
 	if (result != null && result != '') {
 		var resultObj = JSON.parse(result);
 		if (resultObj.parameter.status == '0000') {
-			layer.msg("取消成功！");
-			queryDeviceListByDpId();
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg('取消任务成功!', {icon: 1, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} else {
-			layer.msg("取消失败！");
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg(resultObj.parameter.message, {icon: 2, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} 
 
 	} else {
-		layer.msg("请求服务器异常！");
+        YHLayer.closeAllLayer();
+        layer.msg('请求服务器异常！', {icon: 0, time: 1000}, function () {
+            queryDeviceListByDpId();
+        });
 	}
 };
 
@@ -301,25 +330,31 @@ function refreshDeviceStatus() {
 	}
 		
 	refreshDevice.dpId = dpId;
-		
+    YHLayer.loading();
 	YhHttp.init(YhHttpServiceCode.REFRESH_DEIVCE_STATUS_DP.CODE);
 	YhHttp.send(refreshDevice, refreshDeviceCallBack);
-};
+}
 
 var refreshDeviceCallBack = function(result) {
 	if (result != null && result != '') {
 		var resultObj = JSON.parse(result);
 		if (resultObj.parameter.status == '0000') {
-			layer.msg("设备状态更新成功！");
-			queryDeviceListByDpId();
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg('更新设备状态成功!', {icon: 1, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} else {
-			layer.msg("设备状态更新失败！");
-			return;
+            YHLayer.closeAllLayer();
+            layer.msg(resultObj.parameter.message, {icon: 2, time: 1000}, function () {
+                queryDeviceListByDpId();
+            });
 		} 
 
 	} else {
-		layer.msg("请求服务器异常！");
+        YHLayer.closeAllLayer();
+        layer.msg('请求服务器异常！', {icon: 0, time: 1000}, function () {
+            queryDeviceListByDpId();
+        });
 	}
 };
 
@@ -349,8 +384,10 @@ function queryDeviceListByDpId() {
 	}
 	
 	queryDeviceList.dpId = dpId;
-		
+
+    YHLayer.loading();
+
 	YhHttp.init(YhHttpServiceCode.QUERY_DEVICE_LIST_IN_DP.CODE);
 	YhHttp.send(queryDeviceList, queryDeviceListCallBack);
-};
+}
 

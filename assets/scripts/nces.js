@@ -18,6 +18,9 @@ var totalLightData = {
 var queryUserDpList = {
     userId : ''
 };
+var queryEnum = {
+    eNum: ''
+}
 
 
 function queryUserDpListById() {
@@ -67,8 +70,9 @@ var queryTempTotalInfoCallBack = function (result) {
     if(result != null && result != ''){
         var resultObj = JSON.parse(result);
         if(resultObj.parameter.list == null || resultObj.parameter.list == ''){
-            return;
+            $('#displayDiv').css('display', 'block');
         } else {
+            $('#displayDiv').css('display', 'none');
             var timeArr = [];
             var tempArr = [];
             var totalTempYh = 0;
@@ -94,8 +98,9 @@ var queryLightTotalInfoCallBack = function (result) {
     if(result != null && result != ''){
         var resultObj = JSON.parse(result);
         if(resultObj.parameter.list == null || resultObj.parameter.list == ''){
-            return;
+            $('#displayDiv').css('display', 'block');
         } else {
+            $('#displayDiv').css('display', 'none');
             var timeArr = [];
             var lightArr = [];
             var totalLightYh = 0;
@@ -117,74 +122,9 @@ var queryLightTotalInfoCallBack = function (result) {
     }
 };
 
-$('.searchBtn').on('click', function () {
-    var begin = $('#d4311').val();
-    var end = $('#d4312').val();
-
-    var yearb = begin.substring(0, 4);
-    var monthb = begin.substring(5, 7);
-    var dayb = begin.substring(8, 10);
-
-    var yeare = end.substring(0, 4);
-    var monthe = end.substring(5, 7);
-    var daye = end.substring(8, 10);
-
-    var beginTime = yearb + monthb + dayb;
-    var endTime = yeare + monthe + daye;
-    if(beginTime != ''){
-        beginTime = beginTime + '000000';
-    }
-    if(endTime != ''){
-        endTime = endTime + '000000';
-    }
-
-
-    totalTempData.dpId = $('#changDpInfo').val();
-    totalTempData.beginDate = beginTime;
-    totalTempData.endDate = endTime;
-
-    //temp
-    YhHttp.init(YhHttpServiceCode.QUERY_TEMP_TOTAL_LIST.CODE);
-    YhHttp.send(totalTempData, queryTempTotalInfoCallBack);
-});
-
-$('.queryLight').live('click', function () {
-    var begin = $('#d4311').val();
-    var end = $('#d4312').val();
-
-    var yearb = begin.substring(0, 4);
-    var monthb = begin.substring(5, 7);
-    var dayb = begin.substring(8, 10);
-
-    var yeare = end.substring(0, 4);
-    var monthe = end.substring(5, 7);
-    var daye = end.substring(8, 10);
-
-    var beginTime = yearb + monthb + dayb;
-    var endTime = yeare + monthe + daye;
-    if(beginTime != ''){
-        beginTime = beginTime + '000000';
-    }
-    if(endTime != ''){
-        endTime = endTime + '000000';
-    }
-
-
-    totalLightData.dpId = $('#changDpInfo').val();
-    totalLightData.beginDate = beginTime;
-    totalLightData.endDate = endTime;
-
-    //light
-    YhHttp.init(YhHttpServiceCode.QUERY_LIGHT_TOTAL_LIST.CODE);
-    YhHttp.send(totalLightData, queryLightTotalInfoCallBack);
-});
-
-
-
-
 // 基于准备好的dom，初始化echarts实例
 $('#temp').on('click', function () {
-    $('#query').removeClass('queryLight').addClass('searchBtn');
+    $('#query').attr('data-value', '00');
 
     totalTempData.dpId = $('#changDpInfo').val();
     totalTempData.beginDate = '';
@@ -194,7 +134,7 @@ $('#temp').on('click', function () {
     YhHttp.send(totalTempData, queryTempTotalInfoCallBack);
 });
 $('#light').on('click', function () {
-    $('#query').removeClass('searchBtn').addClass('queryLight');
+    $('#query').attr('data-value', '01');
 
     totalLightData.dpId = $('#changDpInfo').val();
     totalLightData.beginDate = '';
@@ -203,9 +143,49 @@ $('#light').on('click', function () {
     YhHttp.init(YhHttpServiceCode.QUERY_LIGHT_TOTAL_LIST.CODE);
     YhHttp.send(totalLightData, queryLightTotalInfoCallBack);
 });
+
+    $('.searchBtn').on('click', function () {
+        queryEnum.eNum = $('#query').attr('data-value');
+        var begin = $('#d4311').val();
+        var end = $('#d4312').val();
+
+        var yearb = begin.substring(0, 4);
+        var monthb = begin.substring(5, 7);
+        var dayb = begin.substring(8, 10);
+
+        var yeare = end.substring(0, 4);
+        var monthe = end.substring(5, 7);
+        var daye = end.substring(8, 10);
+
+        var beginTime = yearb + monthb + dayb;
+        var endTime = yeare + monthe + daye;
+        if(beginTime != ''){
+            beginTime = beginTime + '000000';
+        }
+        if(endTime != ''){
+            endTime = endTime + '000000';
+        }
+
+        if(queryEnum.eNum == '00'){
+            totalTempData.dpId = $('#changDpInfo').val();
+            totalTempData.beginDate = beginTime;
+            totalTempData.endDate = endTime;
+            //temp
+            YhHttp.init(YhHttpServiceCode.QUERY_TEMP_TOTAL_LIST.CODE);
+            YhHttp.send(totalTempData, queryTempTotalInfoCallBack);
+        } else if(queryEnum.eNum == '01'){
+            totalLightData.dpId = $('#changDpInfo').val();
+            totalLightData.beginDate = beginTime;
+            totalLightData.endDate = endTime;
+            //light
+            YhHttp.init(YhHttpServiceCode.QUERY_LIGHT_TOTAL_LIST.CODE);
+            YhHttp.send(totalLightData, queryLightTotalInfoCallBack);
+        }
+
+    });
+
+
 var myChart = echarts.init(document.getElementById('main'));
-
-
 
 function tempFun(time, temp, avg){
     myChart.showLoading({

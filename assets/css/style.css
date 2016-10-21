@@ -1876,6 +1876,6 @@ Theme Panel
 .input-group{
     padding-right: 60px;
 }
-#addDpInfo,#modifyDpInfo,#addOperatorInfo,#modifyControlInfo,#addDpPlantInfo{
+#addDpInfo,#modifyDpInfo,#addOperatorInfo,#modifyControlInfo,#addDpPlantInfo,#openDeviceInfo{
     padding-top: 20px;
 }

@@ -129,8 +129,11 @@ $(function(){
             var resultObj = JSON.parse(result);
             if (resultObj.parameter.list == null || resultObj.parameter.list == '') {
                 YHLayer.closeAllLayer();
+                $("#groupList").html('');
+                $('#groupContent').hide();
             } else {
                 YHLayer.closeAllLayer();
+                $('#groupContent').show();
                 var param = resultObj.parameter;
                 var tpl = $('#groupTbTpl').html();
                 var htmlContent = juicer(tpl, param);
@@ -205,11 +208,11 @@ $(function(){
                 YHLayer.closeAllLayer();
                 if(resultObj.parameter.status == '0000'){
                     layer.msg(resultObj.parameter.message, {icon: 1, time: 500}, function () {
-                        window.location.reload();
+                        queryGroupListByDpId();
                     });
                 } else {
                     layer.msg(resultObj.parameter.message, {icon: 2, time: 500}, function () {
-                        window.location.reload();
+                        queryGroupListByDpId();
                     });
                 }
             }
@@ -231,7 +234,7 @@ $(function(){
         layer.open({
             type: 1,
             title: '修改',
-            area: ['420px', '180px'],
+            area: ['420px', '200px'],
             shadeClose: false,
             content: content,
             btn: ['确定', '取消'],
@@ -260,7 +263,7 @@ $(function(){
     function modifyGroupCallback(result) {
         if (result != null && result != '') {
             var resultObj = JSON.parse(result);
-            if (resultObj.parameter.list == null || resultObj.parameter.list == '') {
+            if (resultObj.parameter == null || resultObj.parameter == '') {
                 YHLayer.closeAllLayer();
             } else {
                 YHLayer.closeAllLayer();

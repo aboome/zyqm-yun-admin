@@ -141,3 +141,17 @@ select#group{
 .clear{
     clear: none;
 }
+.p{
+    height: 15px;
+}
+.valiTips{
+    width: 100%;
+    color: #ff0000;
+    background-color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+    text-indent: 3em;
+    position: absolute;
+    bottom: 0;
+    display: none;
+}

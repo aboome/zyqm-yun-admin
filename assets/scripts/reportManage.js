@@ -71,8 +71,28 @@ $("#exportStatics").click(function () {
 
 function queryFormsData(pageSize, pageNum){
     YHLayer.loading();
-    formData.startTime = $('#d4311').val();
-    formData.endTime = $('#d4312').val();
+    var sTime = $('#d4311').val();
+    var eTime = $('#d4312').val();
+
+    var sy = sTime.substring(0, 4);
+    var sm = sTime.substring(5, 7);
+    var sd = sTime.substring(8, 10);
+
+    var ey = eTime.substring(0, 4);
+    var em = eTime.substring(5, 7);
+    var ed = eTime.substring(8, 10);
+
+    var beginTime = sy + sm + sd;
+    var endTime = ey + em + ed;
+    if(beginTime != ''){
+        beginTime = beginTime + '000000';
+    }
+    if(endTime != ''){
+        endTime = endTime + '000000';
+    }
+
+    formData.startTime = beginTime;
+    formData.endTime = endTime;
     formData.dpId = $('#dp').val();
     formData.dataEnum = $('#chuanGanQi').val();
     formData.pageNum = pageNum;
@@ -126,36 +146,10 @@ var queryFormsDataCallBack = function (result) {
 };
 
 $('#search').on('click', function () {
-    YHLayer.loading();
-    var sTime = $('#d4311').val();
-    var eTime = $('#d4312').val();
 
-    var sy = sTime.substring(0, 4);
-    var sm = sTime.substring(5, 7);
-    var sd = sTime.substring(8, 10);
+    curPageNum = 1;
+    queryFormsData($('#pages').val(),1);
 
-    var ey = eTime.substring(0, 4);
-    var em = eTime.substring(5, 7);
-    var ed = eTime.substring(8, 10);
-
-    var beginTime = sy + sm + sd;
-    var endTime = ey + em + ed;
-    if(beginTime != ''){
-        beginTime = beginTime + '000000';
-    }
-    if(endTime != ''){
-        endTime = endTime + '000000';
-    }
-
-    formData.startTime = beginTime;
-    formData.endTime = endTime;
-    formData.dpId = $('#dp').val();
-    formData.dataEnum = $('#chuanGanQi').val();
-    formData.pageNum = 1;
-    formData.pageSize = $('#pages').val();
-
-    YhHttp.init(YhHttpServiceCode.QUERY_FORMS_DATA.CODE);
-    YhHttp.send(formData, queryFormsDataCallBack);
 });
 
 

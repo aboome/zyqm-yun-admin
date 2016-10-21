@@ -338,9 +338,13 @@ $(function () {
         errorClass: 'help-block',
         focusInvalid: false,
         rules: {
+            modelType:{required: true, minlength: 1},
+            direct:{required: true, minlength: 1},
             time: {required: true, digits:true,	min:0}
         },
         messages: {
+            modelType:{required: "请选择打开模式", minlength: "请选择打开模式"},
+            direct:{required: "请选择设备打开方向", minlength: "请选择设备打开方向"},
             time:{required:"请输入开启时长",digits:"请输入整数",min:"请输入大于等于0的整数"}
         },
         highlight: function (element) {

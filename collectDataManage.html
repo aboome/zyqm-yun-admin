@@ -171,6 +171,7 @@
 <script src="assets/scripts/yhscripts/yhGo.js"></script>
 <script src="assets/scripts/collectDataManage.js"></script>
 <script src="assets/scripts/yhscripts/yhMenu.js"></script>
+<script src="assets/scripts/yhscripts/yhLayer.js"></script>
 <script>
     jQuery(document).ready(function () {
         App.init();
@@ -198,7 +199,7 @@
                 <p class="sensorName nameH">
                     <img src="assets/img/icon/temp.png" />
                     温度
-                    <a href="javascript:;" class="settingBtn" data-typeVal="00" data-id="${it.dpId}"><img src="assets/img/icon/setting.png" /><span>设置</span></a>
+                    <a href="javascript:;" class="settingBtn settingBtn_00" data-typeVal="00" data-id="${it.dpId}"><img src="assets/img/icon/setting.png" /><span>设置</span></a>
                 </p>
                 <span class="temp sensorAuto" id="temp_${it.dpId}"></span>
                 <p class="detailH warningVal" data-typeVal="00" data-id="${it.dpId}" id="temp_warn_${it.dpId}">
@@ -209,7 +210,7 @@
                 <p class="sensorName nameH">
                     <img src="assets/img/icon/humidity.png" />
                     湿度
-                    <a href="javascript:;" class="settingBtn" data-typeVal="01" data-id="${it.dpId}"><img src="assets/img/icon/setting.png" /><span>设置</span></a>
+                    <a href="javascript:;" class="settingBtn settingBtn_01" data-typeVal="01" data-id="${it.dpId}"><img src="assets/img/icon/setting.png" /><span>设置</span></a>
                 </p>
                 <span class="humidity sensorAuto" id="humidity_${it.dpId}"></span>
                 <p class="detailH warningVal" data-typeVal="01" data-id="${it.dpId}" id="humidity_warn_${it.dpId}">
@@ -373,6 +374,8 @@
         <option value="1">正向开关</option>
         <option value="0">反向开关</option>
     </select>
+    <p class="p"></p>
+    <p class="valiTips"></p>
 </script>
 
 <script id="groupBotTpl" type="text/template">
@@ -393,6 +396,7 @@
         <option value="1">正向开关</option>
         <option value="0">反向开关</option>
     </select>
+    <p class="p"></p>
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

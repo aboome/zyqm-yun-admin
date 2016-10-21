@@ -24,6 +24,7 @@
 }
 #wendu{
     padding: 20px;
+    position: relative;
 }
 #wendu p,#wendu select,#wendu a,#wendu input{
     display: inline-block;
@@ -36,8 +37,19 @@
     padding-top: 7px;
     padding-bottom: 7px;
 }
-#main,#main1{
-    margin-top: 20px;
+#main{
+    margin-top: 45px;
+}
+#displayDiv{
+    text-align: center;
+    font-size: 30px;
+    display: none;
+    height: 600px;
+    width: 100%;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 15%;
+    left: 0;
 }
 #guangzhao{
     padding: 20px;
